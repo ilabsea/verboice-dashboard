@@ -36,21 +36,10 @@
 
     <%= javascript_include_tag "application" %>
 
-    <%= render 'layouts/partial/config' %>
   </head>
   <body>
-    <%= render 'layouts/partial/nav_bar' %>
-    <div class="container body">
-
-      <div class="row">
-        <div class="span12">
-          <%= yield %>
-        </div>
-      </div><!--/row-->
-
-      <%= render 'layouts/partial/footer' %>
-
-    </div> <!-- /container -->
-
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3000/api2/auth
+    body:
+      encoding: US-ASCII
+      string: account[email]=1@example.com&account[password]=password
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Ua-Compatible:
+      - IE=Edge
+      Etag:
+      - "\"cb8b35b62df3b98f6834c4f6ada8b782\""
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 23d56144879b94cc38ea2dcd5345ece7
+      X-Runtime:
+      - '0.076579'
+      Server:
+      - WEBrick/1.3.1 (Ruby/1.9.3/2013-11-22)
+      Date:
+      - Mon, 19 May 2014 10:18:08 GMT
+      Content-Length:
+      - '76'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: "{\"success\":true,\"auth_token\":\"w81J73hCP8DTyhxcXBqM\",\"email\":\"1@example.com\"}"
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: http://localhost:3000/api2/auth
+  recorded_at: Mon, 19 May 2014 10:18:08 GMT
+recorded_with: VCR 2.9.0

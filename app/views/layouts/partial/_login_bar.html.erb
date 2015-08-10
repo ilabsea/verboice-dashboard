@@ -1,0 +1,14 @@
+<% if current_access.present? %>
+  <li class="dropdown pull-right">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+      <%= "#{current_access["email"]} (#{ENV["HOST"]})" %><b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <%= link_to 'Sign out', sign_out_path,
+                    method: 'delete',
+                    data: { confirm: 'Are you sure to sign out' } %>
+      </li>
+    </ul>
+  </li>
+<% end %>

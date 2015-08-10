@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
@@ -20,8 +21,11 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
+gem 'her'
+gem 'typhoeus'
+gem 'virtus'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'sdoc', '~> 0.4.0', require: false,          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
@@ -38,3 +42,48 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+#Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem 'bootstrap-sass', require: true
+
+# gem "less-rails"
+gem "exception_handler"
+
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+gem 'addressable'
+gem 'simple_form'
+# gem "twitter-bootstrap-rails"
+
+gem 'whenever', require: false
+gem 'thin'
+
+# Use debugger
+group :development do
+  gem 'capistrano', '~> 3.0', require: false
+  gem 'capistrano-rails',   '~> 1.1', require: false
+  gem 'capistrano-bundler', '~> 1.1', require: false
+
+  gem 'capistrano-rvm',   '~> 0.1', require: false
+  # gem 'capistrano-rbenv', '~> 2.0', require: false
+  # gem 'capistrano-chruby', github: 'capistrano/chruby', require: false
+end
+
+# gem 'debugger', group: [:development, :test]
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'vcr'
+  gem 'fakeweb'
+  gem 'poltergeist'
+
+  gem 'rspec_api_documentation', github: 'zipmark/rspec_api_documentation'
+  gem 'apitome'
+  gem 'byebug'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+  gem 'simplecov', '~> 0.7.1', require: false
+end

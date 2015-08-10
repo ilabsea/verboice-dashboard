@@ -1,0 +1,15 @@
+defaults: &defaults
+  APP_NAME: 'Verboice Dashboard'
+  HOST: 'CURRENT_DOMAIN_NAME'
+
+  END_POINT: 'http://localhost:3000/api2'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+  END_POINT: 'http://localhost:3000/api2'
