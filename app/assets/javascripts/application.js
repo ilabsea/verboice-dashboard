@@ -15,3 +15,7 @@
 //= require turbolinks
 
 //= require bootstrap-sprockets
+//= require bootstrap-datepicker
+
+//= require project_changed
+//= require dashboards

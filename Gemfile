@@ -48,6 +48,8 @@ gem 'bootstrap-sass', require: true
 # gem "less-rails"
 gem "exception_handler"
 
+gem 'bootstrap-datepicker-rails'
+
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'addressable'
