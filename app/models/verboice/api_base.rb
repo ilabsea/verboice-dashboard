@@ -49,7 +49,7 @@ module Verboice::ApiBase
         data = JSON.parse(response.body, symbolize_names: true)
         return data.map{ |record| self.new(record) }
       else
-        raise ApiException.new('Could not connect to remote server')
+        raise Verboice::ApiException.new('Could not connect to remote server')
       end
     end
 
@@ -85,7 +85,7 @@ module Verboice::ApiBase
     end
 
     def embed(attributes={})
-      params = attributes.merge({email: ActiveApi.email, token: ActiveApi.auth_token})
+      params = attributes.merge({email: Verboice::Api.email, token: Verboice::Api.auth_token})
       params
     end
 
@@ -94,7 +94,7 @@ module Verboice::ApiBase
     end
 
     def base_url
-      ActiveApi.endpoint + "/" + controller_name
+      (Verboice::Api.endpoint ? Verboice::Api.endpoint : "") + "/" + controller_name
     end
 
   end

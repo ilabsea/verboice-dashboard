@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       url = ENV['END_POINT'] + "/auth"
       auth = Session.login(url, session_params[:email], session_params[:password])
       if Session.success?
-        auth[:endpoint] = session_params[:endpoint]
+        auth[:endpoint] = ENV['END_POINT']
         sign_in(auth)
         redirect_to root_path
       else
