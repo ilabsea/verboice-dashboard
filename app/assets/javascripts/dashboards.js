@@ -33,17 +33,18 @@ $(function(){
   });
 
   $("#this_week").on('click', function() {
-    var curr = new Date(); // get current date
-    var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
-    var last = first + 6; // last day is the first day + 6
+    setActive(this);
 
-    var firstday = new Date(curr.setDate(first));
-    var lastday = new Date(curr.setDate(last));
+    var curr = new Date(); // get current date
+    var firstday = new Date(curr.setDate(curr.getDate() - curr.getDay())); // First day is the day of the month - the day of the week
+    var lastday = new Date(curr.setDate(curr.getDate() - curr.getDay() + 6)); // last day is the first day + 6
 
     setDateRange(firstday.toLocaleFormat('%d/%m/%Y'), lastday.toLocaleFormat('%d/%m/%Y'));
   });
 
   $("#this_month").on('click', function() {
+    setActive(this);
+
     var curr = new Date();
     var firstday = new Date(curr.getFullYear(), curr.getMonth(), 1);
     var lastday = new Date(curr.getFullYear(), curr.getMonth() + 1, 0);
@@ -52,6 +53,8 @@ $(function(){
   });
 
   $("#previous_month").on('click', function() {
+    setActive(this);
+
     var curr = new Date();
     var firstday = new Date(curr.getFullYear(), curr.getMonth() - 1, 1);
     var lastday = new Date(curr.getFullYear(), curr.getMonth(), 0);
@@ -59,8 +62,42 @@ $(function(){
     setDateRange(firstday.toLocaleFormat('%d/%m/%Y'), lastday.toLocaleFormat('%d/%m/%Y'));
   });
 
-  $(".list-group-item").on("click", function() {
-    setActive(this);
+  $("#btn_apply").on("click", function() {
+    // date range format: dd/mm/yyyy to dd/mm/yyyy
+    var dateRange = $("#date_range").val().split("to");
+    if (dateRange.length < 2) {
+      showErrorMessage();
+      return;
+    }
+
+    var projectId = $("#project_id option:selected").val();
+    var callFlowId = $("#call_flow_id option:selected").val();
+    var channelId = $("#channel_id option:selected").val();
+    if(channelId == "") {
+      showErrorMessage();
+      return;
+    }
+
+    $.ajax({
+      method: 'GET',
+      url: config['host'] + "api/traffics.json",
+      data: {
+        project_id: projectId,
+        call_flow_id: callFlowId,
+        channel_id: channelId,
+        start_date: dateRange[0].trim(),
+        end_date: dateRange[1].trim()
+      },
+      success: function(records){
+        var fromDate = Date.fromKhFormat(dateRange[0]);
+        var toDate = Date.fromKhFormat(dateRange[1]);
+        drawChart(fromDate, toDate, records);
+      }
+    });
+  });
+
+  $(".alert button.close").click(function (e) {
+    $(this).parent().fadeOut('slow');
   });
 
   function setActive(element) {
@@ -70,6 +107,13 @@ $(function(){
 
   function setDateRange(fromDate, toDate) {
     $("#date_range").val(fromDate + " to " + toDate);
+  }
+
+  function showErrorMessage() {
+    $(".alert-dismissable").fadeIn("slow");
+    window.setTimeout(function() {
+      $(".alert").fadeOut('slow');
+    }, 5000);
   }
 
 });

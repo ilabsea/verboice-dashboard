@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :channels, only: [:index]
     resources :call_flows, only: [:index]
     resources :projects, only: [:index]
+    resources :traffics, only: [:index]
   end
 end

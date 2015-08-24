@@ -1,4 +1,17 @@
-<div class='filter-group'>
+<!-- load library google visualization api -->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load('visualization', '1.1', {packages: ['line']});
+</script>
+
+<div class='col-sm-12'>
+  <div class="alert alert-danger alert-dismissable" style="display:none;">
+        <button type="button" class="close" aria-hidden="true">&times;</button>
+        <p>Channel and date range are required</p>
+  </div>
+</div>
+
+<div class='filter-group' data-toggle="validator" role="form">
   <div class='filter'>
     <div class='form-group col-sm-2'>
       <%= label_tag :project_id %>
@@ -18,8 +31,8 @@
         class: 'form-control input-sm' %>
     </div>
 
-    <div class='form-group col-sm-2'>
-      <%= label_tag :channel_id %>
+    <div class='form-group col-sm-2 required'>
+      <%= label_tag :channel_id, nil, class: 'control-label' %>
       <%= select_tag :channel_id,
         options_for_select(Verboice::Channel.collection),
         prompt: "--- Select channel ---",
@@ -30,10 +43,21 @@
     <div class='form-group col-sm-3'>
       <%= label_tag %>
       <div class="input-group">
-        <input type='text' class="form-control" id='date_range' readonly />
+        <input type='text' class="form-control" id='date_range' readonly required/>
         <div class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></div>
       </div>
     </div>
+
+    <div class='form-group'>
+      <div>&nbsp;</div>
+      <button id='btn_apply' class='btn btn-primary'>Apply</button>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-12">
+  <div class='line-chart'>
+    <div id="linechart"></div>
   </div>
 </div>
 
