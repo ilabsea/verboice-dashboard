@@ -91,9 +91,33 @@ $(function(){
       success: function(records){
         var fromDate = Date.fromKhFormat(dateRange[0]);
         var toDate = Date.fromKhFormat(dateRange[1]);
-        drawChart(fromDate, toDate, records);
+        var chart = new Chart.Line(fromDate, toDate, records);
+        chart.draw(document.getElementById('linechart'));
+        showChartPanel();
       }
     });
+
+    $.ajax({
+      method: 'GET',
+      url: config['host'] + "api/traffic_details.json",
+      data: {
+        project_id: projectId,
+        call_flow_id: callFlowId,
+        channel_id: channelId,
+        start_date: dateRange[0].trim(),
+        end_date: dateRange[1].trim()
+      },
+      success: function(records){
+        var fromDate = Date.fromKhFormat(dateRange[0]);
+        var toDate = Date.fromKhFormat(dateRange[1]);
+        var chart = new Chart.Pie.Graph(records);
+        chart.draw(document.getElementById('piechart-graph'));
+        var table = new Chart.Pie.Table(records);
+        table.clear($("#piechart-table"));
+        table.draw($('#piechart-table'));
+        showChartPanel();
+      }
+    })
   });
 
   $(".alert button.close").click(function (e) {
@@ -114,6 +138,10 @@ $(function(){
     window.setTimeout(function() {
       $(".alert").fadeOut('slow');
     }, 5000);
+  }
+
+  function showChartPanel() {
+    $(".panel-info").removeClass("hide");
   }
 
 });

@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     resources :call_flows, only: [:index]
     resources :projects, only: [:index]
     resources :traffics, only: [:index]
+    resources :traffic_details, only: [:index]
   end
 end

@@ -39,16 +39,18 @@
     <%= render 'layouts/partial/config' %>
   </head>
   <body>
-    <%= render 'layouts/partial/nav_bar' %>
+    <div class='menu'>
+      <%= render 'layouts/partial/nav_bar' %>
+    </div>
+
     <div class="container body">
+      <div class='main-content'>
+        <%= yield %>
+      </div>
 
-      <div class="row">
-        <div class="span12">
-          <%= yield %>
-        </div>
-      </div><!--/row-->
-
-      <%= render 'layouts/partial/footer' %>
+      <div class='footer'>
+        <%= render 'layouts/partial/footer' %>
+      </div>
 
     </div> <!-- /container -->
 

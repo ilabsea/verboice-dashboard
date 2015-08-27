@@ -1,10 +1,18 @@
+.main-content {
+  margin-bottom: 60px;
+}
+
 .copyright{
   background: none repeat scroll 0 0 #fff;
   bottom: 0;
   display: block;
-  padding: 20px 0 20px 0;
+  padding: 0 0 10px;
   position: fixed;
   width: 100%;
+}
+
+.footer {
+  padding: 0px;
 }
 
 .p6 {
@@ -13,10 +21,6 @@
 
 .p10 {
   padding: 10px !important;
-}
-
-.panel-info {
-  margin-bottom: 0px !important;
 }
 
 .no-border {
@@ -29,10 +33,6 @@
 
 .list-group-item:hover {
   border-radius: 4px !important;
-}
-
-div.dropdown li a {
-  color: blue !important;
 }
 
 .no-border {

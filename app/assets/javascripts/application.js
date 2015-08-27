@@ -19,6 +19,10 @@
 
 //= require project_changed
 //= require dashboards
-//= require line_chart
+
+//= require chart/line
+//= require chart/pie
+
 //= require date
 //= require global
+//= require status

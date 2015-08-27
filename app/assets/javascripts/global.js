@@ -5,3 +5,7 @@ function padding(number, length) {
   }
   return result;
 }
+
+function isNull(value) {
+  return (isNaN(value) || value == undefined || value == 'null');
+}
