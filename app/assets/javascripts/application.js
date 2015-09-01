@@ -15,13 +15,16 @@
 //= require turbolinks
 
 //= require bootstrap-sprockets
-//= require bootstrap-datepicker
+
+//= require lib/bootstrap-datepicker
 
 //= require project_changed
 //= require dashboards
 
 //= require chart/line
 //= require chart/pie
+//= require chart/pie/call
+//= require chart/pie/call_flow
 
 //= require date
 //= require global

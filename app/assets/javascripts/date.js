@@ -6,7 +6,7 @@ Date.fromKhFormat = function(dateString) {
   var date = null;
   var values = dateString.split("/");
   if (values.length == 3) {
-    var date = new Date(values[2], values[1] - 1, values[0])
+    var date = new Date(values[2], values[1] - 1, values[0]);
   }
   return date;
 }

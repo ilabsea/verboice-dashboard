@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "bootstrap-datepicker3";
+
+@import "lib/bootstrap-datepicker3";
 
 @import "custom";
 @import "base/override";

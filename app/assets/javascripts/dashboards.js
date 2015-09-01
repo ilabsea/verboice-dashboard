@@ -70,6 +70,9 @@ $(function(){
       return;
     }
 
+    var fromDate = Date.fromKhFormat(dateRange[0]);
+    var toDate = Date.fromKhFormat(dateRange[1]);
+
     var projectId = $("#project_id option:selected").val();
     var callFlowId = $("#call_flow_id option:selected").val();
     var channelId = $("#channel_id option:selected").val();
@@ -78,6 +81,7 @@ $(function(){
       return;
     }
 
+    // line chart traffics
     $.ajax({
       method: 'GET',
       url: config['host'] + "api/traffics.json",
@@ -89,14 +93,34 @@ $(function(){
         end_date: dateRange[1].trim()
       },
       success: function(records){
-        var fromDate = Date.fromKhFormat(dateRange[0]);
-        var toDate = Date.fromKhFormat(dateRange[1]);
         var chart = new Chart.Line(fromDate, toDate, records);
         chart.draw(document.getElementById('linechart'));
         showChartPanel();
       }
     });
 
+    // pie chart call flow summary
+    $.ajax({
+      method: 'GET',
+      url: config['host'] + "api/call_flow_traces.json",
+      data: {
+        project_id: projectId,
+        call_flow_id: callFlowId,
+        channel_id: channelId,
+        start_date: dateRange[0].trim(),
+        end_date: dateRange[1].trim()
+      },
+      success: function(records){
+        var chart = new Chart.Pie.CallFlow.Graph(records, fromDate, toDate);
+        chart.draw(document.getElementById('piechart-call-flow-summary'));
+        var table = new Chart.Pie.CallFlow.Table(records, fromDate, toDate);
+        table.clear($("#table-call-flow-summary"));
+        table.draw($('#table-call-flow-summary'));
+        showChartPanel();
+      }
+    });
+
+    // pie chart call status summary
     $.ajax({
       method: 'GET',
       url: config['host'] + "api/traffic_details.json",
@@ -108,13 +132,11 @@ $(function(){
         end_date: dateRange[1].trim()
       },
       success: function(records){
-        var fromDate = Date.fromKhFormat(dateRange[0]);
-        var toDate = Date.fromKhFormat(dateRange[1]);
-        var chart = new Chart.Pie.Graph(records);
-        chart.draw(document.getElementById('piechart-graph'));
-        var table = new Chart.Pie.Table(records);
-        table.clear($("#piechart-table"));
-        table.draw($('#piechart-table'));
+        var chart = new Chart.Pie.Call.Graph(records, fromDate, toDate);
+        chart.draw(document.getElementById('piechart-call-summary'));
+        var table = new Chart.Pie.Call.Table(records, fromDate, toDate);
+        table.clear($("#table-call-summary"));
+        table.draw($('#table-call-summary'));
         showChartPanel();
       }
     })
