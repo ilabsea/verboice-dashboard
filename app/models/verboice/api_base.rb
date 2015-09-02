@@ -24,7 +24,7 @@ module Verboice::ApiBase
 
   module ClassMethods
     def find(id)
-      response = Typhoeus.get("#{base_url}/#{id}",  body: embed(attributes), headers: {"Accept" => "application/json"})
+      response = Typhoeus.get("#{base_url}/#{id}",  body: embed(), headers: {"Accept" => "application/json"})
       if response.success?
         data = JSON.parse(response.body, symbolize_names: true)
         return self.new(data)
@@ -85,8 +85,7 @@ module Verboice::ApiBase
     end
 
     def embed(attributes={})
-      params = attributes.merge({email: Verboice::Api.email, token: Verboice::Api.auth_token})
-      params
+      attributes.merge({email: Verboice::Api.email, token: Verboice::Api.auth_token})
     end
 
     def controller_name

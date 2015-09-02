@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     resources :channels, only: [:index]
-    resources :call_flows, only: [:index]
+    resources :call_flows, only: [:index, :show]
     resources :projects, only: [:index]
     resources :traffics, only: [:index]
     resources :traffic_details, only: [:index]
