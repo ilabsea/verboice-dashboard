@@ -29,3 +29,5 @@
 //= require date
 //= require global
 //= require status
+
+//= require verboice/call_flow

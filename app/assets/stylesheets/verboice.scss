@@ -1,0 +1,186 @@
+.play {
+  background-image: asset-url("verboice/play.png");
+  background-repeat: no-repeat;
+}
+
+.capture {
+  background-image: asset-url("verboice/capture.png");
+  background-repeat: no-repeat;
+}
+
+.menu {
+  background-image: asset-url("verboice/menu.png");
+  background-repeat: no-repeat;
+}
+
+.branch {
+  background-image: asset-url("verboice/branch.png");
+  background-repeat: no-repeat;
+}
+
+.record {
+  background-image: asset-url("verboice/record.png");
+  background-repeat: no-repeat;
+}
+
+.transfer {
+  background-image: asset-url("verboice/forwardCall.png");
+  background-repeat: no-repeat;
+}
+
+.hang_up_and_call_back {
+  background-image: asset-url("verboice/callback.png");
+  background-repeat: no-repeat;
+}
+
+.language {
+  background-image: asset-url("verboice/language.png");
+  background-repeat: no-repeat;
+}
+
+.mark_as_successful {
+  background-image: asset-url("verboice/mark_as_successful.png");
+  background-repeat: no-repeat;
+}
+
+.mark_as_failed {
+  background-image: asset-url("verboice/mark_as_failed.png");
+  background-repeat: no-repeat;
+}
+
+.nuntium {
+  background-image: asset-url("verboice/message.png");
+  background-repeat: no-repeat;
+}
+
+.register {
+  background-image: asset-url("verboice/register.png");
+  background-repeat: no-repeat;
+}
+
+.deregister {
+  background-image: asset-url("verboice/unregister.png");
+  background-repeat: no-repeat;
+}
+
+.personate {
+  background-image: asset-url("verboice/impersonate.png");
+  background-repeat: no-repeat;
+}
+
+.goto {
+  background-image: asset-url("verboice/link.png");
+  background-repeat: no-repeat;
+}
+
+.hang_up {
+  background-image: asset-url("verboice/hangup.png");
+  background-repeat: no-repeat;
+}
+
+.external {
+  background-image: asset-url("verboice/external.png");
+  background-repeat: no-repeat;
+}
+
+.workflow-content-container {
+  overflow: scroll;
+}
+
+.workflow-container {
+  height: 500px;
+  max-height: 800px;
+  min-width: 2000px;
+  overflow: scroll;
+}
+
+.workflow-container div {
+  display: inline-block;
+  height: 80px;
+  margin: 0 35px 0 0;
+  position: relative;
+  text-align: center;
+  vertical-align: top;
+  width: 55px;
+}
+
+.workflow-container div p {
+  font-size: 11px;
+  line-height: 12px;
+  height: 59px;
+  width: 59px;
+  margin: 0;
+  padding: 0;
+  white-space: normal;
+}
+
+.step {
+  font-size: 11px;
+  line-height: 12px;
+  height: 59px;
+  width: 59px;
+  margin: 0;
+  padding: 0;
+  white-space: normal;
+}
+
+.children {
+  list-style: none;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.item {
+  padding-bottom: 14px;
+}
+
+div.ha span {
+  background: rgba(0, 0, 0, 0) asset_url("verboice/arrow-hor.png") no-repeat scroll 0 0;
+  display: block;
+  height: 8px;
+  left: -31px;
+  position: absolute;
+  top: 28px;
+  width: 32px;
+}
+
+div.va span {
+    background: rgba(0, 0, 0, 0) asset_url("verboice/arrow-ver.png") no-repeat scroll 0 0;
+    display: block;
+    height: 95px;
+    left: -17px;
+    position: absolute;
+    top: -60px;
+    width: 18px;
+}
+
+.workflow-container div.ha-ext span {
+  background: rgba(0, 0, 0, 0) asset_url("verboice/arrow-hor-ext.png") no-repeat scroll 0 0;
+  display: block;
+  height: 8px;
+  left: -31px;
+  position: absolute;
+  top: 30px;
+  width: 95px;
+}
+
+.workflow-container div.va-bl-t.va-merge span {
+  background-position: 0 -3px !important;
+  top: -59px !important;
+}
+.workflow-container div.va-merge span {
+  background-position: 0 -2px !important;
+  top: -58px !important;
+}
+.workflow-container div.va-bl-t span {
+  background: rgba(0, 0, 0, 0) asset_url("verboice/arrow-ver3.png") no-repeat scroll 0 -2px;
+  display: block;
+  height: 95px;
+  left: -31px;
+  position: absolute;
+  top: -60px;
+  width: 32px;
+}

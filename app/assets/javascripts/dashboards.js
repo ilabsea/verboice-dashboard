@@ -99,6 +99,18 @@ $(function(){
       }
     });
 
+    // call flow scheme
+    $.ajax({
+      method: 'GET',
+      url: config['host'] + "api/call_flows/" +callFlowId + ".json",
+      success: function(call_flow){
+        var element = $(".workflow-container");
+        element.children().remove();
+        var callFlow = new CallFlow(call_flow["flow"]);
+        callFlow.drawTo(element);
+      }
+    });
+
     // pie chart call flow summary
     $.ajax({
       method: 'GET',
